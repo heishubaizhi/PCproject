@@ -6,7 +6,7 @@ export const request = (config) => {
     timeout:9999
   })
 
-  https.interceptors.requeste.use(config => {
+  https.interceptors.request.use(config => {
     return config
   })
 

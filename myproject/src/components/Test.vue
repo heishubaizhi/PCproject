@@ -1,13 +1,13 @@
 <template>
-  <h1>这里是home</h1>
+  <h1>测试</h1>
 </template>
 
 <script>
   export default {
-    name: "Home"
+    name: "Test"
   }
 </script>
 
-<style scoped lang="less">
+<style scoped>
 
 </style>
