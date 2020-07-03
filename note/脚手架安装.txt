@@ -1,0 +1,7 @@
+npm install -g webpack@3.6.0
+
+npm install -g @vue/cli  
+
+npm install -g @vue/cli-init
+
+查看安装是否成功：vue --version

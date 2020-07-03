@@ -1,0 +1,65 @@
+﻿1.webpack是什么？
+	webpack就是前端模块化打包工具
+
+2.全局安装webpack
+	npm install webpack -g
+	npm install webpack@3.6.0 -g
+
+3.webpack -v 查看安装版本
+
+4.npm init 初始化项目
+
+5.webpack基本使用 打包js依赖文件
+
+ npm i
+
+
+6.配置webpack.config.js 文件
+	1).module.exprots = {}
+	2).entry:'' //导入路径
+	3).output:{
+			path:path.reslove(__dirname,'dist'), //需要导入path模块
+			filename:'bundle.js'
+		} //导出路径 
+		publice：'dist/'	
+
+7.项目安装webpack
+	npm install webpack@3.6.0 --save-dev
+
+8.配置css文件
+
+9.配置less文件
+
+10.配置图片
+	修改名字 name:'img/[name].[hash:8].[ext]'
+
+
+https://vue-loader.vuejs.org/zh/guide/#vue-cli
+
+11.配置vue
+	resolve: {
+	    alias: {
+	      'vue$':'vue/dist/vue.esm.js'
+	    }
+	  }
+
+
+plugins 插件
+
+1.添加版权plugin
+ new webpack.BannerPlugin()
+
+ 2.打包html plugin
+ npm install html-webpack-plugin@3.2.0 --save-dev
+
+
+13.压缩代码
+npm install uglifyjs-webpack-plugin@1.1.1 --save-dev
+
+14.配置本地服务
+npm install --save-dev webpack-dev-server@2.9.1
+
+devServer: {
+    contentBase:'./dist',
+    inline:true
+  }

@@ -1,0 +1,6 @@
+
+cli2
+vue init webpack 项目名
+
+cli3 4
+vue create 项目名
