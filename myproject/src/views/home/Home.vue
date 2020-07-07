@@ -2,11 +2,9 @@
   <div class="home_box">
     <cHead></cHead>
     <div class="test_main">
-      <div class="tm_left">
         <cMenu></cMenu>
-      </div>
       <div class="tm_right">
-
+        <router-view></router-view>
       </div>
     </div>
 
@@ -16,7 +14,7 @@
 
 <script>
   import cHead from './Head'
-  import cMenu from './Menu'
+  import cMenu from '../menu/Menu'
   export default {
     name: "Home",
     components:{
@@ -30,11 +28,18 @@
     .test_main{
       width: 100%;
       height: calc(100vh - 60px);
-      background: rgba(0,0,0,0.3);
+      /*background: rgba(0,0,0,0.3);*/
+      display: flex;
       .tm_left{
-        width: 200px;
+        /*width: 200px;*/
         height: 100%;
-        background: #333744;
+        background: red;
+      }
+      .tm_right{
+        width: 100%;
+        height: 100%;
+        background: #EAEDF1;
+        padding: 20px;
       }
     }
   }

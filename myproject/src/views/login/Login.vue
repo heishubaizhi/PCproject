@@ -44,8 +44,8 @@
           ]
         },
         login_form:{
-          username:'',
-          password:''
+          username:'admin',
+          password:'123456'
         }
       }
     },
@@ -63,7 +63,8 @@
             return
           }
           reqLogin(this.login_form).then(data => {
-            console.log(data)
+            // console.log(data)
+            sessionStorage.setItem('token',data.data.token)
             this.$router.push('/home')
           }).catch(err => {
             console.log(err)

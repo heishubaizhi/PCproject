@@ -1,10 +1,12 @@
 <template>
+  <div id="app">
+    <router-view></router-view>
+  </div>
 
-
-  <router-view></router-view>
 </template>
 
 <style lang="less">
+  @import "assets/fonts/iconfont.css";
   *{
     margin:0;
     padding: 0;

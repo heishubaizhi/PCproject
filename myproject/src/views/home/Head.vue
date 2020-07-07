@@ -6,7 +6,7 @@
       <h1>电商后台管理系统</h1>
     </div>
     <div class="th_right">
-      <el-button type="info">退出</el-button>
+      <el-button type="info" @click="logOut">退出</el-button>
     </div>
   </div>
 
@@ -14,7 +14,17 @@
 
 <script>
   export default {
-    name: "Head"
+    name: "Head",
+    methods:{
+      logOut(){
+        this.$confirm('确认退出？')
+          .then(() => {
+            sessionStorage.clear()
+            this.$router.push('/login')
+          })
+          .catch(() => {});
+      }
+    }
   }
 </script>
 
