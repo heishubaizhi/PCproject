@@ -33,3 +33,55 @@ export const reqUser = (params) => {
     // }
   })
 }
+
+//改变用户状态数据请求
+export const changeState = (id,state) => {
+  return request({
+    url:`users/${id}/state/${state}`,
+    method:'put',
+  })
+}
+
+//添加用户数据请求
+export const addUser = (data) => {
+  return request({
+    url:'users',
+    method:'post',
+    data
+  })
+}
+
+//修改用户数据请求
+export const modifyUser = (id,data) => {
+  return request({
+    url:`users/${id}`,
+    method:'put',
+    data
+  })
+}
+
+//删除用户数据请求
+export const deleteUser = (id) => {
+  return request({
+    url:`users/${id}`,
+    method:'delete'
+  })
+}
+
+//分配用户角色数据请求
+export const allotUser = (id,state) => {
+  return request({
+    url:`users/${id}/role`,
+    method:'put',
+    data:{
+      rid:state
+    }
+  })
+}
+
+
+
+
+
+
+
