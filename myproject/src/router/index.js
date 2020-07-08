@@ -5,8 +5,8 @@ const Home = () => import('views/home/Home')
 const Login = () => import('views/login/Login')
 const Test = () => import('components/Test')
 const UserList = () => import('views/user/UserList')
-const RoolList = () => import('views/rool/RoolList')
-const RoleList = () => import('views/rool/RoleList')
+const RightList = () => import('views/roles/RightList')
+const RoleList = () => import('views/roles/RoleList')
 
 Vue.use(VueRouter)
 
@@ -36,7 +36,7 @@ const routes = [
       },
       {
         path:'/rights',
-        component: RoolList
+        component: RightList
       },
       {
         path:'/roles',

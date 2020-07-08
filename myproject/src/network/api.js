@@ -68,13 +68,69 @@ export const deleteUser = (id) => {
   })
 }
 
+//获取角色列表数据请求
+export const getUserRoleList = () => {
+  return request({
+    url:'roles',
+    method:'get'
+  })
+}
+
 //分配用户角色数据请求
-export const allotUser = (id,state) => {
+export const allotUser = (id,rid) => {
   return request({
     url:`users/${id}/role`,
     method:'put',
     data:{
-      rid:state
+      rid
+    }
+  })
+}
+
+//获取权限列表数据请求
+export const getUserRightList = () => {
+  return request({
+    url:'rights/list',
+    method:'get'
+  })
+}
+
+//添加角色请求
+export const addUserRoleList = (roleName,roleDesc) => {
+  return request({
+    url:'roles',
+    method:'post',
+    data:{
+      roleName,
+      roleDesc
+    }
+  })
+}
+
+//删除角色特定权限
+export const deleteUserRight = (roleid,rightid) => {
+  return request({
+    url:`roles/${roleid}/rights/${rightid}`,
+    method:'delete'
+  })
+}
+
+//删除角色
+export const deleteUserRole = (id) => {
+  return request({
+    url:`roles/${id}`,
+    method:'delete'
+  })
+}
+
+//编辑提交角色
+export const updateUserRole = (id,roleName,roleDesc) => {
+  return request({
+    url:`roles/${id}`,
+    method:'put',
+    data:{
+      roleName,
+      roleDesc
     }
   })
 }
