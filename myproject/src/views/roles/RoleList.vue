@@ -16,7 +16,7 @@
                         style="width: 100%">
                     <el-table-column type="expand">
                         <template slot-scope="scope">
-                            <RoleListDetails :rowInfo="scope.row"></RoleListDetails>
+                            <RoleListDetails :rowInfo="scope.row" ></RoleListDetails>
                         </template>
                     </el-table-column>
                     <el-table-column type="index" label="#">
@@ -35,7 +35,7 @@
                         <template slot-scope="scope">
                             <el-button type="primary" size="mini" icon="el-icon-edit" @click="updateRoleBtn(scope)">编辑</el-button>
                             <el-button type="danger" size="mini" icon="el-icon-delete" @click="deleteRoleBtn(scope)">删除</el-button>
-                            <el-button type="warning" size="mini" icon="el-icon-setting">分配权限</el-button>
+                            <el-button type="warning" size="mini" icon="el-icon-setting" @click="allotRightBtn(scope)">分配权限</el-button>
                         </template>
                     </el-table-column>
                 </el-table>
@@ -43,6 +43,7 @@
         </el-card>
         <RoleListAdd ref="RoleListAdd" @addShowRoleList="addShowRoleList"></RoleListAdd>
         <RoleListUpdate ref="RoleListUpdate" @addShowRoleList="addShowRoleList" :updateRoleDate="updateRoleDate"></RoleListUpdate>
+        <RoleRightAllot @updateRoleRight="updateRoleRight" ref="RoleRightAllot" :allotRightDate="allotRightDate" :showRoleList="showRoleList"></RoleRightAllot>
     </div>
 </template>
 
@@ -51,25 +52,37 @@
     import RoleListDetails from "./children_role/RoleListDetails";
     import RoleListAdd from "./children_role/RoleListAdd";
     import RoleListUpdate from "./children_role/RoleListUpdate";
+    import RoleRightAllot from "./children_role/RoleRightAllot";
     import {getUserRoleList,deleteUserRole} from "../../network/api";
 
     export default {
     name: "RoleList",
-      components:{Breadcrumb,RoleListDetails,RoleListAdd,RoleListUpdate},
+      components:{Breadcrumb,RoleListDetails,RoleListAdd,RoleListUpdate,RoleRightAllot},
         created() {
             this.showRoleList()
         },
         data(){
         return{
+            //保存角色列表数据
             roleListDate:[],
+            //保存编辑角色数据
             updateRoleDate:{
                 id:'',
                 roleName:'',
                 roleDesc:'',
-            }
+            },
+            //保存分配权限角色数据，（要对哪个角色进行分配）
+            allotRightDate:{},
+          /*  //保存角色权限详细数据
+            RoleRightDetails:{}*/
         }
       },
       methods:{
+        //分配权限按钮
+          allotRightBtn(scope){
+              this.$refs.RoleRightAllot.dialogFormVisible = true
+              this.allotRightDate = scope.row
+          },
         //编辑角色按钮
           updateRoleBtn(scope){
               // console.log(scope.row)
@@ -112,6 +125,9 @@
               // this.$message.success(result.meta.msg)
               this.roleListDate = result.data
           },
+          updateRoleRight(){
+              this.allotRightDate = {}
+          }
       },
   }
 </script>

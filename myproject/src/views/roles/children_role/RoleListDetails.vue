@@ -31,7 +31,10 @@
     name: "RoleListDetails",
     props:{
       rowInfo:{
-        type:Object
+        type:Object,
+        default(){
+          return
+        }
       }
     },
     async created() {
@@ -49,7 +52,7 @@
         if(result.meta.status !== 200) return this.$message.error(result.meta.msg)
         this.$message.success(result.meta.msg)
         this.UserRoleListData = result.data
-        // console.log(result.data,this.UserRoleListData)
+        this.rowInfo.children = result.data
       }
     }
   }

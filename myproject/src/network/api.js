@@ -135,6 +135,43 @@ export const updateUserRole = (id,roleName,roleDesc) => {
   })
 }
 
+//获取权限 树状 列表数据请求
+export const getUserRightTreeList = () => {
+  return request({
+    url:'rights/tree',
+    method:'get'
+  })
+}
+
+//给角色授权数据请求
+export const allotRoleRight = (roleId,rids) => {
+  return request({
+    url:`roles/${roleId}/rights`,
+    method:'post',
+    data:{rids}
+  })
+}
+
+//获取商品分类数据列表
+export const getCategoriesList = ({type,pagenum,pagesize}) => {
+  return request({
+    url:'categories',
+    method:'get',
+    params:{
+      type,pagenum,pagesize
+    }
+  })
+}
+
+//获取商品列表数据请求
+export const getGoodsList = ({type,pagenum,pagesize}) => {
+  return request({
+    url:'goods',
+    method:'get',
+    params:{type,pagenum,pagesize}
+  })
+}
+
 
 
 

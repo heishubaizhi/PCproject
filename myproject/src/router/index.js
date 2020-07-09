@@ -7,6 +7,9 @@ const Test = () => import('components/Test')
 const UserList = () => import('views/user/UserList')
 const RightList = () => import('views/roles/RightList')
 const RoleList = () => import('views/roles/RoleList')
+const GoodsList = () => import('views/wares/GoodsList')
+const CategoriesList = () => import('views/wares/CategoriesList')
+import ParamsList from "../views/wares/ParamsList";
 
 Vue.use(VueRouter)
 
@@ -42,6 +45,18 @@ const routes = [
         path:'/roles',
         component:RoleList
       },
+      {
+        path:'/goods',
+        component:GoodsList
+      },
+      {
+        path:'/categories',
+        component:CategoriesList
+      },
+      {
+        path:'/params',
+        component:ParamsList
+      }
     ]
   },
   {
