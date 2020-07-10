@@ -172,6 +172,15 @@ export const getGoodsList = ({type,pagenum,pagesize}) => {
   })
 }
 
+//添加商品分类请求
+export const addCategories = ({cat_pid,cat_name,cat_level}) => {
+  return request({
+    url:'categories',
+    method:'post',
+    data:{cat_pid,cat_name,cat_level}
+  })
+}
+
 
 
 

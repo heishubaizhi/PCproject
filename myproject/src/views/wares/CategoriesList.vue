@@ -6,7 +6,7 @@
       <span slot="tow">商品分类</span>
     </Breadcrumb>
     <el-card>
-      <el-button type="primary" style="margin-bottom: 20px">添加分类</el-button>
+      <el-button type="primary" @click="CategoriesAddBtn" style="margin-bottom: 20px">添加分类</el-button>
       <ZkTable
               :data="CategoriesListData"
               :columns="columns"
@@ -46,18 +46,19 @@
               :total="total">
       </el-pagination>
     </el-card>
-
+    <CategoriesListAdd ref="CategoriesListAdd" :addCategoriesListData="addCategoriesListData"></CategoriesListAdd>
 
   </div>
 </template>
 
 <script>
   import Breadcrumb from "../../components/Breadcrumb";
+  import CategoriesListAdd from "./children_Categories/CategoriesListAdd";
   import {getCategoriesList} from "../../network/api";
 
   export default {
     name: "Categories",
-    components:{Breadcrumb},
+    components:{Breadcrumb,CategoriesListAdd},
     created(){
       this.showCategoriesListDate()
     },
@@ -70,6 +71,7 @@
           pagesize:5,
         },
         CategoriesListData:[],
+        addCategoriesListData:[],
         columns:[
           {
             label:'分类名称',
@@ -95,6 +97,16 @@
       }
     },
     methods:{
+      //添加分类按钮
+      CategoriesAddBtn(){
+        this.$refs.CategoriesListAdd.dialogFormVisible = true
+        const getCategoriesReq = {type:2,pagenum:'',pagesize:''}
+        getCategoriesList(getCategoriesReq).then(_ => {
+          // console.log(_)
+          this.addCategoriesListData = _.data
+          // console.log(this.addCategoriesListData)
+        })
+      },
       handleSizeChange(val){
         this.reqParams.pagesize = val
         this.showCategoriesListDate()
@@ -103,6 +115,7 @@
         this.reqParams.pagenum = val
         this.showCategoriesListDate()
       },
+      //渲染页面
       showCategoriesListDate(){
         getCategoriesList(this.reqParams).then(data => {
           this.CategoriesListData = data.data.result
