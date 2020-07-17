@@ -181,7 +181,16 @@ export const addCategories = ({cat_pid,cat_name,cat_level}) => {
   })
 }
 
-
+//获取参数列表  categories/:id/attributes  通过 only 或 many 来获取分类静态参数还是动态参数
+export const getParamsList = (id,sel) => {
+  return request({
+    url:`categories/${id}/attributes`,
+    method:'get',
+    params:{
+      sel:sel
+    }
+  })
+}
 
 
 

@@ -56,6 +56,9 @@
         if(result.meta.status !== 201) return this.$message.error(result.meta.msg)
         this.$message.success(result.meta.msg)
         this.addCatDate.cat_name = ''
+        this.selectId = []
+        this.dialogFormVisible = false
+        this.$emit('showCategoriesList')
       },
       handleChange(val){
         if(val.length === 0){

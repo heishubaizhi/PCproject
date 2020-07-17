@@ -46,7 +46,7 @@
               :total="total">
       </el-pagination>
     </el-card>
-    <CategoriesListAdd ref="CategoriesListAdd" :addCategoriesListData="addCategoriesListData"></CategoriesListAdd>
+    <CategoriesListAdd ref="CategoriesListAdd" :addCategoriesListData="addCategoriesListData" @showCategoriesList="showCategoriesList"></CategoriesListAdd>
 
   </div>
 </template>
@@ -113,6 +113,10 @@
       },
       handleCurrentChange(val){
         this.reqParams.pagenum = val
+        this.showCategoriesListDate()
+      },
+      //子组件跟新成功后渲染页面
+      showCategoriesList(){
         this.showCategoriesListDate()
       },
       //渲染页面
